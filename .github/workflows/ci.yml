@@ -24,3 +24,12 @@ jobs:
       # Step 4: Output logs
       - name: Logs
         run: echo "CI pipeline completed"
+      # Step 5: Slack Notification
+      - name: Slack Notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
