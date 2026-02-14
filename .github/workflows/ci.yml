@@ -1,0 +1,26 @@
+name: CI Pipeline
+
+# Trigger pipeline on push to main branch
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Build project (for HTML, just a message)
+      - name: Build project
+        run: echo "Build successful for static HTML project"
+
+      # Step 3: Test project (optional)
+      - name: Test project
+        run: echo "No tests defined"
+
+      # Step 4: Output logs
+      - name: Logs
+        run: echo "CI pipeline completed"
