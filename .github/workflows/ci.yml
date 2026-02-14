@@ -1,6 +1,8 @@
 name: CI Pipeline
 
+
 # Trigger pipeline on push to main branch
+
 on:
   push:
     branches: [ main ]
@@ -9,6 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       # Step 1: Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -25,6 +28,20 @@ jobs:
       - name: Logs
         run: echo "CI pipeline completed"
       # Step 5: Slack Notification
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build project
+        run: echo "Build successful for static HTML project"
+
+      - name: Test project
+        run: echo "No tests defined"
+
+      - name: Logs
+        run: echo "CI pipeline completed"
+
+
       - name: Slack Notification
         uses: 8398a7/action-slack@v3
         with:
@@ -32,4 +49,6 @@ jobs:
           fields: repo,message,commit
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
 
